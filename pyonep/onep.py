@@ -342,12 +342,14 @@ class OnepV1():
 
     def listing(self, auth, types, options=None, resource=None, defer=False):
         """This provides backward compatibility with two
-           previous variants of listing. To use the non-deprecated
-           API, pass both options and resource."""
-        if options is None:
-            # This variant is deprecated
+           previous variants of listing.
+        """
+        if options is None and resource is None:
+            # this variant is deprecated
             return self._call('listing', auth, [types], defer)
         else:
+            if options is None:
+                options = []
             if resource is None:
                 # This variant is deprecated, too
                 return self._call('listing',
