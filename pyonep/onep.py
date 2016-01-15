@@ -349,7 +349,7 @@ class OnepV1():
             return self._call('listing', auth, [types], defer)
         else:
             if options is None:
-                options = []
+                options = {}
             if resource is None:
                 # This variant is deprecated, too
                 return self._call('listing',
